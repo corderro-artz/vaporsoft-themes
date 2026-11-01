@@ -1,0 +1,7 @@
+id = "vaporsoft"
+name = "Vaporsoft"
+version = "1.0.0"
+schema_version = 1
+authors = ["Vaporsoft"]
+description = "Vaporsoft brand themes, dark and light. One accent: carmine."
+repository = "https://github.com/corderro-artz/vaporsoft-themes"

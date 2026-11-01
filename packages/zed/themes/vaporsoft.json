@@ -1,0 +1,736 @@
+// =============================================================================
+// VAPORSOFT for Zed  |  theme family v1.0.0  |  JSONC (Zed accepts comments)
+// Source of truth: ../../../palette.json. Every colour below is a palette value,
+// optionally with an alpha suffix. Nothing is invented. Run scripts/check-theme.mjs.
+//
+// PALETTE KEY
+//   carmine  #a11f31  the only accent. Exact, never approximated.
+//   ink      #07080b  dark ground          paper    #f2ede6  light ground / dark text
+//   graphite #121318  light text / rules   surface  #f4efe8  light surface
+//   ramp     shades #801c2b #641a26 #491822 #2d151d   (read on LIGHT grounds)
+//            tints  #b44f5b #c3777e #d39ea1 #e2c6c3   (read on DARK grounds)
+//   live     #2ea44f  functional signal only (success / added). Never decorative.
+//
+// RULES
+//   1. Carmine exact for strokes, fills, caret, focus, selection. Never for dark-theme text
+//      (2.6:1 on ink). Text on dark uses tints; text on light uses carmine or shades.
+//   2. No other hues. Structure comes from ramp position, alpha, and font style.
+//   3. Alpha steps follow the palette's own (dark: .78 muted, .14 line; light: .72, .12).
+//      Extra steps: .06 hover, .10 active, .22 strong, .38 disabled, .50 faint, .60/.62 hint.
+//   4. Alpha hex: .06=0f .10=1a .12=1f .14=24 .15=26 .20=33 .22=38 .25=40 .30=4d
+//                 .35=59 .38=61 .40=66 .50=80 .60=99 .62=9e .72=b8 .78=c7
+// =============================================================================
+{
+  "$schema": "https://zed.dev/schema/themes/v0.2.0.json",
+  "name": "Vaporsoft",
+  "author": "Vaporsoft",
+  "themes": [
+    // =========================================================================
+    // VAPORSOFT DARK  (ground: ink)
+    // =========================================================================
+    {
+      "name": "Vaporsoft Dark",
+      "appearance": "dark",
+      "style": {
+        // --- Window ----------------------------------------------------------
+        "background.appearance": "opaque",
+        "background": "#07080b",
+        "surface.background": "#07080b",
+        "elevated_surface.background": "#121318",
+
+        // --- Borders ---------------------------------------------------------
+        "border": "#f2ede624",
+        "border.variant": "#f2ede614",
+        "border.focused": "#a11f31",
+        "border.selected": "#a11f31",
+        "border.transparent": "#f2ede600",
+        "border.disabled": "#f2ede60f",
+
+        // --- Elements (buttons, inputs) --------------------------------------
+        "element.background": "#f2ede60f",
+        "element.hover": "#f2ede61a",
+        "element.active": "#f2ede624",
+        "element.selected": "#a11f3140",
+        "element.disabled": "#f2ede60f",
+        "element.selection_background": "#a11f314d",
+
+        // --- Ghost elements (same ground as their surface) -------------------
+        "ghost_element.background": "#f2ede600",
+        "ghost_element.hover": "#f2ede60f",
+        "ghost_element.active": "#f2ede61a",
+        "ghost_element.selected": "#a11f3133",
+        "ghost_element.disabled": "#f2ede600",
+
+        // --- Drag and drop ---------------------------------------------------
+        "drop_target.background": "#a11f3140",
+        "drop_target.border": "#a11f31",
+
+        // --- Text ------------------------------------------------------------
+        "text": "#f2ede6",
+        "text.muted": "#f2ede6c7",
+        "text.placeholder": "#f2ede680",
+        "text.disabled": "#f2ede661",
+        "text.accent": "#c3777e",
+
+        // --- Icons -----------------------------------------------------------
+        "icon": "#f2ede6c7",
+        "icon.muted": "#f2ede680",
+        "icon.disabled": "#f2ede661",
+        "icon.placeholder": "#f2ede680",
+        "icon.accent": "#c3777e",
+
+        // --- Chrome: title, status, toolbar, tabs ----------------------------
+        "title_bar.background": "#07080b",
+        "title_bar.inactive_background": "#07080b",
+        "status_bar.background": "#07080b",
+        "toolbar.background": "#07080b",
+        "tab_bar.background": "#07080b",
+        "tab.inactive_background": "#07080b",
+        "tab.active_background": "#121318",
+
+        // --- Search ----------------------------------------------------------
+        "search.match_background": "#a11f3159",
+        "search.active_match_background": "#a11f3199",
+
+        // --- Panels and panes ------------------------------------------------
+        "panel.background": "#07080b",
+        "panel.focused_border": "#a11f3180",
+        "panel.indent_guide": "#f2ede61a",
+        "panel.indent_guide_hover": "#f2ede638",
+        "panel.indent_guide_active": "#f2ede680",
+        "panel.overlay_background": "#121318",
+        "panel.overlay_hover": "#f2ede61a",
+        "pane.focused_border": "#a11f3180",
+        "pane_group.border": "#f2ede624",
+
+        // --- Scrollbar -------------------------------------------------------
+        "scrollbar.thumb.background": "#f2ede624",
+        "scrollbar.thumb.hover_background": "#f2ede638",
+        "scrollbar.thumb.active_background": "#a11f31",
+        "scrollbar.thumb.border": "#f2ede600",
+        "scrollbar.track.background": "#07080b",
+        "scrollbar.track.border": "#f2ede614",
+
+        // --- Minimap ---------------------------------------------------------
+        "minimap.thumb.background": "#f2ede61a",
+        "minimap.thumb.hover_background": "#f2ede624",
+        "minimap.thumb.active_background": "#f2ede638",
+        "minimap.thumb.border": "#f2ede624",
+
+        // --- Editor surface --------------------------------------------------
+        "editor.foreground": "#f2ede6",
+        "editor.background": "#07080b",
+        "editor.gutter.background": "#07080b",
+        "editor.subheader.background": "#121318",
+        "editor.code_lens.foreground": "#f2ede6c7",
+
+        // --- Editor lines ----------------------------------------------------
+        "editor.active_line.background": "#f2ede60f",
+        "editor.highlighted_line.background": "#f2ede61a",
+        "editor.debugger_active_line.background": "#a11f314d",
+        "editor.line_number": "#f2ede680",
+        "editor.active_line_number": "#f2ede6",
+        "editor.hover_line_number": "#f2ede6c7",
+        "editor.invisible": "#f2ede661",
+
+        // --- Editor guides ---------------------------------------------------
+        "editor.wrap_guide": "#f2ede614",
+        "editor.active_wrap_guide": "#f2ede638",
+        "editor.indent_guide": "#f2ede61a",
+        "editor.indent_guide_active": "#f2ede661",
+
+        // --- Document highlights (symbol under cursor, brackets) -------------
+        "editor.document_highlight.read_background": "#f2ede61a",
+        "editor.document_highlight.write_background": "#a11f3138",
+        "editor.document_highlight.bracket_background": "#a11f3140",
+
+        // --- Diff hunks in the editor ----------------------------------------
+        "editor.diff_hunk.added.background": "#2ea44f26",
+        "editor.diff_hunk.added.hollow_background": "#2ea44f14",
+        "editor.diff_hunk.added.hollow_border": "#2ea44f",
+        "editor.diff_hunk.deleted.background": "#a11f3133",
+        "editor.diff_hunk.deleted.hollow_background": "#a11f3126",
+        "editor.diff_hunk.deleted.hollow_border": "#a11f31",
+
+        // --- Terminal: base --------------------------------------------------
+        "terminal.background": "#07080b",
+        "terminal.foreground": "#f2ede6",
+        "terminal.ansi.background": "#07080b",
+        "terminal.bright_foreground": "#f2ede6",
+        "terminal.dim_foreground": "#f2ede680",
+
+        // --- Terminal: ANSI (single hue: ramp tiers; green = live signal) ----
+        "terminal.ansi.black": "#121318",
+        "terminal.ansi.bright_black": "#f2ede680",
+        "terminal.ansi.dim_black": "#121318",
+        "terminal.ansi.red": "#c3777e",
+        "terminal.ansi.bright_red": "#d39ea1",
+        "terminal.ansi.dim_red": "#b44f5b",
+        "terminal.ansi.green": "#2ea44f",
+        "terminal.ansi.bright_green": "#2ea44f",
+        "terminal.ansi.dim_green": "#2ea44f",
+        "terminal.ansi.yellow": "#e2c6c3",
+        "terminal.ansi.bright_yellow": "#f2ede6",
+        "terminal.ansi.dim_yellow": "#d39ea1",
+        "terminal.ansi.blue": "#b44f5b",
+        "terminal.ansi.bright_blue": "#c3777e",
+        "terminal.ansi.dim_blue": "#801c2b",
+        "terminal.ansi.magenta": "#d39ea1",
+        "terminal.ansi.bright_magenta": "#e2c6c3",
+        "terminal.ansi.dim_magenta": "#b44f5b",
+        "terminal.ansi.cyan": "#f2ede6c7",
+        "terminal.ansi.bright_cyan": "#f2ede6",
+        "terminal.ansi.dim_cyan": "#f2ede680",
+        "terminal.ansi.white": "#f2ede6",
+        "terminal.ansi.bright_white": "#f2ede6",
+        "terminal.ansi.dim_white": "#f2ede6c7",
+
+        // --- Links -----------------------------------------------------------
+        "link_text.hover": "#e2c6c3",
+
+        // --- Version control -------------------------------------------------
+        "version_control.added": "#2ea44f",
+        "version_control.deleted": "#c3777e",
+        "version_control.modified": "#d39ea1",
+        "version_control.renamed": "#e2c6c3",
+        "version_control.conflict": "#c3777e",
+        "version_control.ignored": "#f2ede680",
+        "version_control.word_added": "#2ea44f59",
+        "version_control.word_deleted": "#a11f3159",
+        "version_control.conflict_marker.ours": "#a11f3140",
+        "version_control.conflict_marker.theirs": "#f2ede61a",
+
+        // --- Vim / Helix mode indicators -------------------------------------
+        "vim.normal.background": "#a11f31",
+        "vim.normal.foreground": "#f2ede6",
+        "vim.insert.background": "#f2ede6",
+        "vim.insert.foreground": "#07080b",
+        "vim.replace.background": "#801c2b",
+        "vim.replace.foreground": "#f2ede6",
+        "vim.visual.background": "#c3777e",
+        "vim.visual.foreground": "#07080b",
+        "vim.visual_line.background": "#d39ea1",
+        "vim.visual_line.foreground": "#07080b",
+        "vim.visual_block.background": "#e2c6c3",
+        "vim.visual_block.foreground": "#07080b",
+        "vim.yank.background": "#c3777e66",
+        "vim.helix_normal.background": "#a11f31",
+        "vim.helix_normal.foreground": "#f2ede6",
+        "vim.helix_select.background": "#d39ea1",
+        "vim.helix_select.foreground": "#07080b",
+        "vim.helix_jump_label.foreground": "#e2c6c3",
+
+        // --- Debugger (breakpoints) ------------------------------------------
+        "debugger.accent": "#a11f31",
+
+        // --- Status: conflict ------------------------------------------------
+        "conflict": "#c3777e",
+        "conflict.background": "#a11f3133",
+        "conflict.border": "#a11f31",
+
+        // --- Status: created -------------------------------------------------
+        "created": "#2ea44f",
+        "created.background": "#2ea44f26",
+        "created.border": "#2ea44f80",
+
+        // --- Status: deleted -------------------------------------------------
+        "deleted": "#c3777e",
+        "deleted.background": "#a11f3133",
+        "deleted.border": "#a11f31",
+
+        // --- Status: error ---------------------------------------------------
+        "error": "#c3777e",
+        "error.background": "#a11f3133",
+        "error.border": "#a11f31",
+
+        // --- Status: hidden --------------------------------------------------
+        "hidden": "#f2ede661",
+        "hidden.background": "#f2ede60f",
+        "hidden.border": "#f2ede61a",
+
+        // --- Status: hint ----------------------------------------------------
+        "hint": "#f2ede699",
+        "hint.background": "#f2ede61a",
+        "hint.border": "#f2ede638",
+
+        // --- Status: ignored -------------------------------------------------
+        "ignored": "#f2ede680",
+        "ignored.background": "#f2ede60f",
+        "ignored.border": "#f2ede61a",
+
+        // --- Status: info ----------------------------------------------------
+        "info": "#d39ea1",
+        "info.background": "#d39ea126",
+        "info.border": "#d39ea180",
+
+        // --- Status: modified ------------------------------------------------
+        "modified": "#d39ea1",
+        "modified.background": "#d39ea126",
+        "modified.border": "#d39ea180",
+
+        // --- Status: predictive (inline completions) -------------------------
+        "predictive": "#f2ede680",
+        "predictive.background": "#f2ede60f",
+        "predictive.border": "#f2ede61a",
+
+        // --- Status: renamed -------------------------------------------------
+        "renamed": "#e2c6c3",
+        "renamed.background": "#e2c6c326",
+        "renamed.border": "#e2c6c380",
+
+        // --- Status: success -------------------------------------------------
+        "success": "#2ea44f",
+        "success.background": "#2ea44f26",
+        "success.border": "#2ea44f80",
+
+        // --- Status: unreachable ---------------------------------------------
+        "unreachable": "#f2ede680",
+        "unreachable.background": "#f2ede60f",
+        "unreachable.border": "#f2ede61a",
+
+        // --- Status: warning (pale tint; no extra hue) -----------------------
+        "warning": "#e2c6c3",
+        "warning.background": "#e2c6c326",
+        "warning.border": "#e2c6c380",
+
+        // --- Accents (rainbow brackets, in order) ----------------------------
+        "accents": ["#c3777e", "#e2c6c3", "#b44f5b", "#d39ea1", "#a11f31", "#f2ede6"],
+
+        // --- Players (carmine is always the local user) ----------------------
+        "players": [
+          { "cursor": "#a11f31", "background": "#a11f31", "selection": "#a11f314d" },
+          { "cursor": "#c3777e", "background": "#c3777e", "selection": "#c3777e40" },
+          { "cursor": "#d39ea1", "background": "#d39ea1", "selection": "#d39ea140" },
+          { "cursor": "#e2c6c3", "background": "#e2c6c3", "selection": "#e2c6c340" },
+          { "cursor": "#b44f5b", "background": "#b44f5b", "selection": "#b44f5b40" },
+          { "cursor": "#f2ede6", "background": "#f2ede6", "selection": "#f2ede633" },
+          { "cursor": "#801c2b", "background": "#801c2b", "selection": "#801c2b66" },
+          { "cursor": "#641a26", "background": "#641a26", "selection": "#641a2680" }
+        ],
+
+        // --- Syntax ----------------------------------------------------------
+        // Tiers: keyword #c3777e | function #e2c6c3 | type + string #d39ea1
+        //        constant #c3777e | text #f2ede6 | punctuation, comment = alpha
+        "syntax": {
+          // Comments
+          "comment": { "color": "#f2ede680", "font_style": "italic" },
+          "comment.doc": { "color": "#f2ede699", "font_style": "italic" },
+
+          // Keywords and preprocessor
+          "keyword": { "color": "#c3777e" },
+          "preproc": { "color": "#c3777e" },
+          "attribute": { "color": "#d39ea1" },
+
+          // Functions
+          "function": { "color": "#e2c6c3" },
+          "constructor": { "color": "#e2c6c3" },
+
+          // Types
+          "type": { "color": "#d39ea1" },
+          "type.builtin": { "color": "#d39ea1" },
+          "enum": { "color": "#d39ea1" },
+          "variant": { "color": "#d39ea1" },
+          "label": { "color": "#d39ea1" },
+
+          // Variables and properties
+          "variable": { "color": "#f2ede6" },
+          "variable.parameter": { "color": "#f2ede6" },
+          "variable.special": { "color": "#c3777e", "font_style": "italic" },
+          "property": { "color": "#f2ede6" },
+          "primary": { "color": "#f2ede6" },
+          "embedded": { "color": "#f2ede6" },
+
+          // Literals
+          "string": { "color": "#d39ea1" },
+          "string.escape": { "color": "#e2c6c3" },
+          "string.regex": { "color": "#e2c6c3" },
+          "string.special": { "color": "#e2c6c3" },
+          "string.special.symbol": { "color": "#e2c6c3" },
+          "number": { "color": "#c3777e" },
+          "boolean": { "color": "#c3777e" },
+          "constant": { "color": "#c3777e" },
+          "constant.builtin": { "color": "#c3777e" },
+
+          // Operators and punctuation
+          "operator": { "color": "#f2ede6c7" },
+          "punctuation": { "color": "#f2ede699" },
+          "punctuation.bracket": { "color": "#f2ede6c7" },
+          "punctuation.delimiter": { "color": "#f2ede699" },
+          "punctuation.list_marker": { "color": "#c3777e" },
+          "punctuation.markup": { "color": "#c3777e" },
+          "punctuation.special": { "color": "#c3777e" },
+
+          // Markup and web
+          "tag": { "color": "#c3777e" },
+          "tag.doctype": { "color": "#c3777e" },
+          "selector": { "color": "#d39ea1" },
+          "selector.pseudo": { "color": "#c3777e" },
+          "title": { "color": "#c3777e", "font_weight": 700 },
+          "emphasis": { "color": "#f2ede6", "font_style": "italic" },
+          "emphasis.strong": { "color": "#f2ede6", "font_weight": 700 },
+          "link_text": { "color": "#c3777e" },
+          "link_uri": { "color": "#d39ea1" },
+          "text.literal": { "color": "#d39ea1" },
+
+          // Editor-provided
+          "hint": { "color": "#f2ede699" },
+          "predictive": { "color": "#f2ede680", "font_style": "italic" }
+        }
+      }
+    },
+
+    // =========================================================================
+    // VAPORSOFT LIGHT  (ground: paper, surfaces: #f4efe8)
+    // =========================================================================
+    {
+      "name": "Vaporsoft Light",
+      "appearance": "light",
+      "style": {
+        // --- Window ----------------------------------------------------------
+        "background.appearance": "opaque",
+        "background": "#f2ede6",
+        "surface.background": "#f4efe8",
+        "elevated_surface.background": "#f4efe8",
+
+        // --- Borders ---------------------------------------------------------
+        "border": "#1213181f",
+        "border.variant": "#12131814",
+        "border.focused": "#a11f31",
+        "border.selected": "#a11f31",
+        "border.transparent": "#12131800",
+        "border.disabled": "#1213180f",
+
+        // --- Elements (buttons, inputs) --------------------------------------
+        "element.background": "#1213180f",
+        "element.hover": "#1213181a",
+        "element.active": "#12131824",
+        "element.selected": "#a11f3133",
+        "element.disabled": "#1213180f",
+        "element.selection_background": "#a11f3133",
+
+        // --- Ghost elements (same ground as their surface) -------------------
+        "ghost_element.background": "#12131800",
+        "ghost_element.hover": "#1213180f",
+        "ghost_element.active": "#1213181a",
+        "ghost_element.selected": "#a11f3126",
+        "ghost_element.disabled": "#12131800",
+
+        // --- Drag and drop ---------------------------------------------------
+        "drop_target.background": "#a11f3133",
+        "drop_target.border": "#a11f31",
+
+        // --- Text ------------------------------------------------------------
+        "text": "#121318",
+        "text.muted": "#121318b8",
+        "text.placeholder": "#12131880",
+        "text.disabled": "#12131861",
+        "text.accent": "#a11f31",
+
+        // --- Icons -----------------------------------------------------------
+        "icon": "#121318b8",
+        "icon.muted": "#12131880",
+        "icon.disabled": "#12131861",
+        "icon.placeholder": "#12131880",
+        "icon.accent": "#a11f31",
+
+        // --- Chrome: title, status, toolbar, tabs ----------------------------
+        "title_bar.background": "#f4efe8",
+        "title_bar.inactive_background": "#f2ede6",
+        "status_bar.background": "#f4efe8",
+        "toolbar.background": "#f2ede6",
+        "tab_bar.background": "#f4efe8",
+        "tab.inactive_background": "#f4efe8",
+        "tab.active_background": "#f2ede6",
+
+        // --- Search ----------------------------------------------------------
+        "search.match_background": "#a11f3138",
+        "search.active_match_background": "#a11f3166",
+
+        // --- Panels and panes ------------------------------------------------
+        "panel.background": "#f4efe8",
+        "panel.focused_border": "#a11f3180",
+        "panel.indent_guide": "#1213181a",
+        "panel.indent_guide_hover": "#12131838",
+        "panel.indent_guide_active": "#12131880",
+        "panel.overlay_background": "#f4efe8",
+        "panel.overlay_hover": "#1213181a",
+        "pane.focused_border": "#a11f3180",
+        "pane_group.border": "#1213181f",
+
+        // --- Scrollbar -------------------------------------------------------
+        "scrollbar.thumb.background": "#12131824",
+        "scrollbar.thumb.hover_background": "#12131838",
+        "scrollbar.thumb.active_background": "#a11f31",
+        "scrollbar.thumb.border": "#12131800",
+        "scrollbar.track.background": "#f2ede6",
+        "scrollbar.track.border": "#12131814",
+
+        // --- Minimap ---------------------------------------------------------
+        "minimap.thumb.background": "#1213181a",
+        "minimap.thumb.hover_background": "#12131824",
+        "minimap.thumb.active_background": "#12131838",
+        "minimap.thumb.border": "#12131824",
+
+        // --- Editor surface --------------------------------------------------
+        "editor.foreground": "#121318",
+        "editor.background": "#f2ede6",
+        "editor.gutter.background": "#f2ede6",
+        "editor.subheader.background": "#f4efe8",
+        "editor.code_lens.foreground": "#121318b8",
+
+        // --- Editor lines ----------------------------------------------------
+        "editor.active_line.background": "#1213180f",
+        "editor.highlighted_line.background": "#1213181a",
+        "editor.debugger_active_line.background": "#a11f3133",
+        "editor.line_number": "#1213189e",
+        "editor.active_line_number": "#121318",
+        "editor.hover_line_number": "#121318b8",
+        "editor.invisible": "#12131861",
+
+        // --- Editor guides ---------------------------------------------------
+        "editor.wrap_guide": "#12131814",
+        "editor.active_wrap_guide": "#12131838",
+        "editor.indent_guide": "#1213181a",
+        "editor.indent_guide_active": "#12131861",
+
+        // --- Document highlights (symbol under cursor, brackets) -------------
+        "editor.document_highlight.read_background": "#1213181a",
+        "editor.document_highlight.write_background": "#a11f3126",
+        "editor.document_highlight.bracket_background": "#a11f3133",
+
+        // --- Diff hunks in the editor ----------------------------------------
+        "editor.diff_hunk.added.background": "#2ea44f26",
+        "editor.diff_hunk.added.hollow_background": "#2ea44f14",
+        "editor.diff_hunk.added.hollow_border": "#2ea44f",
+        "editor.diff_hunk.deleted.background": "#a11f3126",
+        "editor.diff_hunk.deleted.hollow_background": "#a11f3114",
+        "editor.diff_hunk.deleted.hollow_border": "#a11f31",
+
+        // --- Terminal: base --------------------------------------------------
+        "terminal.background": "#f2ede6",
+        "terminal.foreground": "#121318",
+        "terminal.ansi.background": "#f2ede6",
+        "terminal.bright_foreground": "#121318",
+        "terminal.dim_foreground": "#12131880",
+
+        // --- Terminal: ANSI (single hue: ramp tiers; green = live signal) ----
+        "terminal.ansi.black": "#121318",
+        "terminal.ansi.bright_black": "#12131880",
+        "terminal.ansi.dim_black": "#121318b8",
+        "terminal.ansi.red": "#a11f31",
+        "terminal.ansi.bright_red": "#801c2b",
+        "terminal.ansi.dim_red": "#b44f5b",
+        "terminal.ansi.green": "#2ea44f",
+        "terminal.ansi.bright_green": "#2ea44f",
+        "terminal.ansi.dim_green": "#2ea44f",
+        "terminal.ansi.yellow": "#491822",
+        "terminal.ansi.bright_yellow": "#2d151d",
+        "terminal.ansi.dim_yellow": "#641a26",
+        "terminal.ansi.blue": "#641a26",
+        "terminal.ansi.bright_blue": "#801c2b",
+        "terminal.ansi.dim_blue": "#491822",
+        "terminal.ansi.magenta": "#b44f5b",
+        "terminal.ansi.bright_magenta": "#a11f31",
+        "terminal.ansi.dim_magenta": "#c3777e",
+        "terminal.ansi.cyan": "#121318b8",
+        "terminal.ansi.bright_cyan": "#121318",
+        "terminal.ansi.dim_cyan": "#12131880",
+        "terminal.ansi.white": "#f4efe8",
+        "terminal.ansi.bright_white": "#f2ede6",
+        "terminal.ansi.dim_white": "#f4efe8",
+
+        // --- Links -----------------------------------------------------------
+        "link_text.hover": "#641a26",
+
+        // --- Version control -------------------------------------------------
+        "version_control.added": "#2ea44f",
+        "version_control.deleted": "#a11f31",
+        "version_control.modified": "#801c2b",
+        "version_control.renamed": "#491822",
+        "version_control.conflict": "#a11f31",
+        "version_control.ignored": "#12131880",
+        "version_control.word_added": "#2ea44f59",
+        "version_control.word_deleted": "#a11f3159",
+        "version_control.conflict_marker.ours": "#a11f3133",
+        "version_control.conflict_marker.theirs": "#1213181a",
+
+        // --- Vim / Helix mode indicators -------------------------------------
+        "vim.normal.background": "#a11f31",
+        "vim.normal.foreground": "#f2ede6",
+        "vim.insert.background": "#121318",
+        "vim.insert.foreground": "#f2ede6",
+        "vim.replace.background": "#641a26",
+        "vim.replace.foreground": "#f2ede6",
+        "vim.visual.background": "#801c2b",
+        "vim.visual.foreground": "#f2ede6",
+        "vim.visual_line.background": "#491822",
+        "vim.visual_line.foreground": "#f2ede6",
+        "vim.visual_block.background": "#2d151d",
+        "vim.visual_block.foreground": "#f2ede6",
+        "vim.yank.background": "#a11f3140",
+        "vim.helix_normal.background": "#a11f31",
+        "vim.helix_normal.foreground": "#f2ede6",
+        "vim.helix_select.background": "#801c2b",
+        "vim.helix_select.foreground": "#f2ede6",
+        "vim.helix_jump_label.foreground": "#a11f31",
+
+        // --- Debugger (breakpoints) ------------------------------------------
+        "debugger.accent": "#a11f31",
+
+        // --- Status: conflict ------------------------------------------------
+        "conflict": "#a11f31",
+        "conflict.background": "#a11f3126",
+        "conflict.border": "#a11f3180",
+
+        // --- Status: created -------------------------------------------------
+        "created": "#2ea44f",
+        "created.background": "#2ea44f26",
+        "created.border": "#2ea44f80",
+
+        // --- Status: deleted -------------------------------------------------
+        "deleted": "#a11f31",
+        "deleted.background": "#a11f3126",
+        "deleted.border": "#a11f3180",
+
+        // --- Status: error ---------------------------------------------------
+        "error": "#a11f31",
+        "error.background": "#a11f3126",
+        "error.border": "#a11f3180",
+
+        // --- Status: hidden --------------------------------------------------
+        "hidden": "#12131861",
+        "hidden.background": "#1213180f",
+        "hidden.border": "#1213181a",
+
+        // --- Status: hint ----------------------------------------------------
+        "hint": "#1213189e",
+        "hint.background": "#1213181a",
+        "hint.border": "#12131838",
+
+        // --- Status: ignored -------------------------------------------------
+        "ignored": "#12131880",
+        "ignored.background": "#1213180f",
+        "ignored.border": "#1213181a",
+
+        // --- Status: info ----------------------------------------------------
+        "info": "#801c2b",
+        "info.background": "#801c2b26",
+        "info.border": "#801c2b80",
+
+        // --- Status: modified ------------------------------------------------
+        "modified": "#801c2b",
+        "modified.background": "#801c2b26",
+        "modified.border": "#801c2b80",
+
+        // --- Status: predictive (inline completions) -------------------------
+        "predictive": "#12131880",
+        "predictive.background": "#1213180f",
+        "predictive.border": "#1213181a",
+
+        // --- Status: renamed -------------------------------------------------
+        "renamed": "#491822",
+        "renamed.background": "#49182226",
+        "renamed.border": "#49182280",
+
+        // --- Status: success -------------------------------------------------
+        "success": "#2ea44f",
+        "success.background": "#2ea44f26",
+        "success.border": "#2ea44f80",
+
+        // --- Status: unreachable ---------------------------------------------
+        "unreachable": "#12131880",
+        "unreachable.background": "#1213180f",
+        "unreachable.border": "#1213181a",
+
+        // --- Status: warning (deep shade; no extra hue) ----------------------
+        "warning": "#491822",
+        "warning.background": "#49182226",
+        "warning.border": "#49182280",
+
+        // --- Accents (rainbow brackets, in order) ----------------------------
+        "accents": ["#a11f31", "#641a26", "#801c2b", "#2d151d", "#491822", "#b44f5b"],
+
+        // --- Players (carmine is always the local user) ----------------------
+        "players": [
+          { "cursor": "#a11f31", "background": "#a11f31", "selection": "#a11f3133" },
+          { "cursor": "#801c2b", "background": "#801c2b", "selection": "#801c2b33" },
+          { "cursor": "#641a26", "background": "#641a26", "selection": "#641a2633" },
+          { "cursor": "#491822", "background": "#491822", "selection": "#49182233" },
+          { "cursor": "#2d151d", "background": "#2d151d", "selection": "#2d151d33" },
+          { "cursor": "#b44f5b", "background": "#b44f5b", "selection": "#b44f5b40" },
+          { "cursor": "#c3777e", "background": "#c3777e", "selection": "#c3777e4d" },
+          { "cursor": "#121318", "background": "#121318", "selection": "#12131826" }
+        ],
+
+        // --- Syntax ----------------------------------------------------------
+        // Tiers: keyword + constant #a11f31 | function #641a26 | type + string #801c2b
+        //        text #121318 | punctuation, comment = alpha
+        "syntax": {
+          // Comments
+          "comment": { "color": "#1213189e", "font_style": "italic" },
+          "comment.doc": { "color": "#121318b8", "font_style": "italic" },
+
+          // Keywords and preprocessor
+          "keyword": { "color": "#a11f31" },
+          "preproc": { "color": "#a11f31" },
+          "attribute": { "color": "#801c2b" },
+
+          // Functions
+          "function": { "color": "#641a26" },
+          "constructor": { "color": "#641a26" },
+
+          // Types
+          "type": { "color": "#801c2b" },
+          "type.builtin": { "color": "#801c2b" },
+          "enum": { "color": "#801c2b" },
+          "variant": { "color": "#801c2b" },
+          "label": { "color": "#801c2b" },
+
+          // Variables and properties
+          "variable": { "color": "#121318" },
+          "variable.parameter": { "color": "#121318" },
+          "variable.special": { "color": "#a11f31", "font_style": "italic" },
+          "property": { "color": "#121318" },
+          "primary": { "color": "#121318" },
+          "embedded": { "color": "#121318" },
+
+          // Literals
+          "string": { "color": "#801c2b" },
+          "string.escape": { "color": "#491822" },
+          "string.regex": { "color": "#491822" },
+          "string.special": { "color": "#491822" },
+          "string.special.symbol": { "color": "#491822" },
+          "number": { "color": "#a11f31" },
+          "boolean": { "color": "#a11f31" },
+          "constant": { "color": "#a11f31" },
+          "constant.builtin": { "color": "#a11f31" },
+
+          // Operators and punctuation
+          "operator": { "color": "#121318b8" },
+          "punctuation": { "color": "#1213189e" },
+          "punctuation.bracket": { "color": "#121318b8" },
+          "punctuation.delimiter": { "color": "#1213189e" },
+          "punctuation.list_marker": { "color": "#a11f31" },
+          "punctuation.markup": { "color": "#a11f31" },
+          "punctuation.special": { "color": "#a11f31" },
+
+          // Markup and web
+          "tag": { "color": "#a11f31" },
+          "tag.doctype": { "color": "#a11f31" },
+          "selector": { "color": "#801c2b" },
+          "selector.pseudo": { "color": "#a11f31" },
+          "title": { "color": "#a11f31", "font_weight": 700 },
+          "emphasis": { "color": "#121318", "font_style": "italic" },
+          "emphasis.strong": { "color": "#121318", "font_weight": 700 },
+          "link_text": { "color": "#a11f31" },
+          "link_uri": { "color": "#801c2b" },
+          "text.literal": { "color": "#801c2b" },
+
+          // Editor-provided
+          "hint": { "color": "#1213189e" },
+          "predictive": { "color": "#12131880", "font_style": "italic" }
+        }
+      }
+    }
+  ]
+}

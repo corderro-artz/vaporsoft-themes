@@ -1,0 +1,60 @@
+{
+  "name": "Vaporsoft",
+  "version": "1.0.0",
+  "source": "src/styles/global.css",
+  "note": "Machine-readable mirror of the CSS custom properties. global.css is what ships and is authoritative; scripts/check-palette.mjs fails if the two disagree, or if any brand SVG uses a hex outside this file.",
+  "canonical": "https://www.vaporsoft.dev/brand/palette.json",
+
+  "core": {
+    "carmine":  { "hex": "#a11f31", "rgb": [161, 31, 49], "css": "--vapor-carmine",  "role": "The only accent. Never substituted, never approximated." },
+    "ink":      { "hex": "#07080b", "rgb": [7, 8, 11],    "css": "--vapor-ink",      "role": "Dark-theme ground." },
+    "paper":    { "hex": "#f2ede6", "rgb": [242, 237, 230], "css": "--vapor-paper",  "role": "Light-theme ground, and dark-theme text." },
+    "graphite": { "hex": "#121318", "rgb": [18, 19, 24],  "css": "--vapor-graphite", "role": "Light-theme text and rules." }
+  },
+
+  "theme": {
+    "dark": {
+      "canvas":  "#07080b",
+      "surface": "#07080b",
+      "text":    "#f2ede6",
+      "muted":   "rgba(242, 237, 230, 0.78)",
+      "line":    "rgba(242, 237, 230, 0.14)"
+    },
+    "light": {
+      "canvas":  "#f2ede6",
+      "surface": "#f4efe8",
+      "text":    "#121318",
+      "muted":   "rgba(18, 19, 24, 0.72)",
+      "line":    "rgba(18, 19, 24, 0.12)"
+    }
+  },
+
+  "atmosphere": {
+    "note": "Stops of the fixed background gradient, top to bottom. Not for foreground use.",
+    "dark":  ["#06070a", "#090b0f", "#07080b"],
+    "light": ["#f7f3ed", "#f4efe8", "#f2ede6"]
+  },
+
+  "ramp": {
+    "note": "Anchored on carmine, roughly constant luminance ratio (~1.6) between stops. Used by the CRISPR disc. Shades read on light grounds, tints on dark.",
+    "shades": ["#801c2b", "#641a26", "#491822", "#2d151d"],
+    "anchor": "#a11f31",
+    "tints":  ["#b44f5b", "#c3777e", "#d39ea1", "#e2c6c3"]
+  },
+
+  "functional": {
+    "live": { "hex": "#2ea44f", "role": "Status dot for a running service. Signal only — not a brand colour, never decorative." }
+  },
+
+  "retired": {
+    "note": "Values that shipped before 2026-09-16 and are wrong anywhere they appear. The check script rejects them on sight. #f7f3ed is absent deliberately: it is a valid atmosphere stop in CSS, it was only wrong as an icon plate, where the surface value belongs.",
+    "#a42839": "#a11f31",
+    "#9b1f30": "#a11f31",
+    "#121418": "#121318"
+  },
+
+  "svg": {
+    "note": "A brand SVG may only use these. Derived, not a separate list to maintain: the four core values, the two theme grounds and surfaces, and the ramp. Anything else in public/brand/**.svg fails the check.",
+    "allow": ["core.*", "theme.dark.canvas", "theme.dark.text", "theme.light.canvas", "theme.light.surface", "theme.light.text", "ramp.*"]
+  }
+}

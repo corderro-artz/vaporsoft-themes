@@ -1,0 +1,18 @@
+{"background": "#07080b", "foreground": "#f2ede6", "caret": "#a11f31", "gutter": "rgba(242, 237, 230, 0.14)", "lineNumbers": "rgba(242, 237, 230, 0.78)", "selection": "#121318", "guide": "#121318", "bracket": "#a11f31",
+  "syntax": {
+    "keyword": "#a11f31",
+    "string": "#d39ea1",
+    "comment": "rgba(242, 237, 230, 0.5)",
+    "variable": "#801c2b",
+    "function": "#641a26",
+    "number": "#d39ea1",
+    "operator": "#e2c6c3",
+    "storage": "#a11f31"
+  },
+  "ui": {
+    "panelBackground": "#090b0f",
+    "toolbar": "#07080b",
+    "sidebar": "#07080b",
+    "tabActive": "#121318"
+  }
+}
